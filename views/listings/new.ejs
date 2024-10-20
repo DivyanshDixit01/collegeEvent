@@ -1,0 +1,60 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row"></div>
+<div class="col-8 offset-2">
+    <h3>Create A New Listings</h3>
+    <form method="POST" action="/listings" novalidate class="needs-validation" >
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label><br>
+            <input name="listing[title]" placeholder="enter title" type="text" class="form-control" required />
+            
+          
+        </div>
+        <br/>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label><br>
+            <input name="listing[description]" placeholder="enter description" class="form-control" required />
+            <div class="invalid-feedback">
+                please enter shot description
+              </div>
+        
+        </div>
+        
+        <br/>
+
+        <div class="mb-3"> 
+            <label for="image" class="form-label">Image</label> <br>
+        <input name="listing[image]" placeholder="select image url" type="text" class="form-control" />
+        </div> 
+        <br/>
+        <div class="row">
+        <div class="mb-3 col-md-4"> 
+            <label for="entryfee" class="form-label">Entryfee</label><br>
+        <input name="listing[entryfee]" placeholder="0" type="number" class="form-control" required/>
+        <div class="invalid-feedback">
+            please enter valid fee
+          </div>
+    </div>
+        <div class="mb-3 col-md-8"> 
+            <label for="contact" class="form-label">Contact</label><br>
+        <input name="listing[contact]" placeholder="ipsacademy@gmail.com" type="text" class="form-control" required />
+        <div class="invalid-feedback">
+            please enter correct contact detail
+          </div>
+    </div>
+</div>
+        <br/>
+       <div class="mb-3">
+        <label for="location" class="form-label">Location</label><br>
+        <input name="listing[location]" placeholder="IPS Academy,Indore" type="text" class="form-control" required>
+        <div class="invalid-feedback">
+            please enter real location
+          </div>
+    </div>
+        <br/>
+        <button class="btn btn-dark add-btn">ADD</button>
+       
+    </form>
+</div>
+
+
+</div>
