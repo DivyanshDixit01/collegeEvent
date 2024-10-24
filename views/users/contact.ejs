@@ -1,0 +1,104 @@
+<% layout("/layouts/boilerplate") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Swarajali Event Management</h1>
+    </header>
+    
+    <main>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need more information, feel free to reach out to us!</p>
+            <div class="contact-details">
+                <p><strong>Email:</strong> IPS academy@gmail.org</p>
+                <p><strong>Phone:</strong> 9856447232</p>
+                <p><strong>Office:</strong> Block A Floor no - 5, IPS Academy College </p>
+            </div>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="responseMessage" class="hidden"></div>
+        </section>
+    </main>
+
+
+ <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+#contact {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.contact-details {
+    margin-top: 15px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+#responseMessage {
+    margin-top: 20px;
+    color: green;
+}
+
+</style>
+</body>
+</html>

@@ -8,9 +8,12 @@ const listingSchema = new Schema({
         require: true,
     },
     description:String,
-    image:String,
+    image:{
+        url:String,
+    },
     entryfee:Number,
     contact:String,
+    date:String,
     location:String,
     reviews:[
         {
@@ -18,6 +21,10 @@ const listingSchema = new Schema({
           ref:"Review",
         },
     ],
+    owner :{
+        type : Schema.Types.ObjectId,
+        ref:"User"
+    }
 
 });
 

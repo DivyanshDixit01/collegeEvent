@@ -1,49 +1,57 @@
 const express = require("express");
 const router = express.Router();
 const wrapasync = require("../utils/wrapasync.js");
-const Expresserrorr = require("../utils/Expresserrorr.js");
-const { listingSchema  } = require("../schema.js");
 const Listing = require("../models/listing.js");
+const {isLoggedIn,isOwner,validateListing} = require("../middleware.js");
+const multer = require("multer");
+const {storage} = require("../cloudConfig.js");
+const upload = multer({ storage });
 
 
-const validateListing = (req,res,next) =>{
-    let {error} = listingSchema.validate(req.body);
-    if(error){
-        let errMsg = error.details.map((el) => el.message).join(",")
-        throw new Expresserrorr(400,"err");
-    }else{
-        next();
-    }
+router.get(("/"),wrapasync(async(req,res)=>{
+  const alllistings= await Listing.find({});
+  res.render("../views/listings/index.ejs",{ alllistings });
 
-};
+}));
 
-router.get("/",wrapasync(async(req,res)=>{
-    const alllistings= await Listing.find({});
-    res.render("../views/listings/index.ejs",{ alllistings });
- }));
- router.get("/new",(req,res)=>{
+
+
+router.get("/new",isLoggedIn,(req,res)=>{
     res.render("listings/new.ejs");
 });
  router.get("/:id",wrapasync( async (req, res) => {
     const { id } = req.params;
-    const listing = await Listing.findById(id).populate("reviews");
+    const listing = await Listing.findById(id)
+    .populate({
+      path:"reviews",
+      populate:{
+        path:"author",
+      },
+      })
+      .populate("owner");
     if(!listing){
         req.flash("error","Listing you requested for does not exist!" ); 
         res.redirect("/listings");
     }
+    console.log(listing)
     res.render("../views/listings/show.ejs", { listing });
 }));
 
-router.post("/",validateListing,wrapasync(async(req,res,next)=>{
-     const newListings = new Listing(req.body.listing);
-    await newListings.save();
+router.post("/",isLoggedIn,upload.single("listing[image]"),validateListing,wrapasync(async(req,res,next)=>{
+    let url = req.file.path;
+     const newListing = new Listing(req.body.listing);
+     newListing.owner = req.user._id;
+  newListing.image = {url};
+    await newListing.save();
     req.flash("success","New Listings Created!" );
     res.redirect("/listings");
     
 })
 );
 
-router.get("/:id/edit",wrapasync( async (req, res) => {
+router.get("/:id/edit",isLoggedIn,
+    isOwner,
+    wrapasync( async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     if(!listing){
@@ -52,14 +60,25 @@ router.get("/:id/edit",wrapasync( async (req, res) => {
     }
     res.render("listings/edit.ejs", { listing });
   }));
-router.put("/:id",validateListing,wrapasync( async (req, res) => {
+router.put("/:id",
+    isLoggedIn,
+    isOwner,
+    upload.single("listing[image]"),
+    validateListing,wrapasync( async (req, res) => {
     let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    let listing =await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    if( typeof req.file !=="undefined"){
+    let url = req.file.path;
+    listing.image = { url };
+    await listing.save();
+    }
     req.flash("success","Listing Updated!");
     res.redirect(`/listings/${id}`);
   }));
 
-  router.delete("/:id", wrapasync(async (req, res) => {
+  router.delete("/:id",isLoggedIn,
+    isOwner,
+    wrapasync(async (req, res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);

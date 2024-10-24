@@ -1,6 +1,29 @@
+<style>
+.search-btn{
+  background-color: gray;
+  color:rgb(40, 116, 183) ;
+  border-radius: 25px;
+  padding: 0 1rem 0 1rem;
+}
+.search-btn:hover{
+  background-color: gray;
+  color:rgb(43, 88, 155);
+}
+
+.search-btn i{
+  display:inline ;
+  margin-right: 0.5rem;
+}
+
+.search-inp {
+  border-radius: 25px;
+}
+
+</style>
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Swarajali</a>
+    <a class="navbar-brand" href="/listings">Swarajali</a>
     <button class="navbar-toggler" 
     type="button" 
     data-bs-toggle="collapse" 
@@ -12,12 +35,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link " href="#">Home</a>
-        <a class="nav-link" href="#">Event</a>
-        <a class="nav-link" href="#">Upcoming Event </a>
-        <a class="nav-link" href="#">Contact</a>
-        <a class="nav-link" href="#">About us</a>
+        <a class="nav-link " href="/listings">Home</a>
+        <a class="nav-link" href="/listings">Event</a>
+       
+         <a class="nav-link" href="/contact">Contact</a>
+        <a class="nav-link" href="/about">About us</a>
+
+<div class="navbar-nav ms-auto">
+  <form class="d-flex" role="search-inp">
+    <input class="form-control me-2 search-" type="search" placeholder="Search Event" aria-label="Search">
+    <button class="btn search-btn" type="submit">Search</button>
+  </form>
+</div>
+
     
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">New Event </a>
+        <% if(!currUser) { %>
+        <a class="nav-link " href="/signup"><b>SignUp </b></a>
+        <a class="nav-link" href="/login"><b>Log In</b></a>
+        <% } %>
+        <% if(currUser) { %>
+        <a class="nav-link" href="/logout">Log Out</a>
+        <% } %>
       </div>
     </div>
   </div>

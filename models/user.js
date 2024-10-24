@@ -1,9 +1,13 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const passportLocalMongoose = require("passport-Local-Mongoose");
+const passportLocalMongoose = require("passport-local-Mongoose");
 
 const userSchema = new Schema({
-   name : String,
+   username :{
+    type: String,
+    required:true 
+   },
   email : String,
   password :String,
     });

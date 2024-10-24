@@ -1,21 +1,82 @@
 <% layout("/layouts/boilerplate")%>
 
 <body>
-    <h3>all listings</h3>
     <form method="GET" action="/listings/new">
-        <button>Create New Listing</button>
       </form>
-      <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1">
+
+      <style>
+        #filters{
+        display:flex;
+        flex-wrap:wrap;
+        }
+
+        .filter{
+          text-align: center;
+          margin-right:2rem ;
+          margin-top: 2rem;
+          opacity: 0.7;
+        }
+        .filter:hover{
+          opacity: 1;
+          cursor: pointer;
+
+          .filter p{
+            font-size: 0.8rem;
+          }
+        }
+      </style>
+      
+      <div id ="filters">
+        <div class="filter">
+         <div> <i class="fa-solid fa-icons"></i> </div>
+         <p> Dance</p>
+        </div>
+          <div class="filter">
+           <div> <i class="fa-solid fa-microphone"></i></div>
+           <p> Singing</p>
+          </div>
+          
+            <div class="filter">
+             <div> <i class="fa-solid fa-video"></i> </div>
+             <p> Drama</p>
+            </div>
+           
+              <div class="filter">
+               <div> <i class="fa-solid fa-clapperboard"></i> </div>
+               <p> Talent</p>
+              </div>
+              
+                <div class="filter">
+                 <div> <i class="fa-solid fa-chess"></i> </div>
+                 <p> Chess</p>
+                </div>
+               
+                  <div class="filter">
+                   <div> <i class="fa-solid fa-brain"></i> </div>
+                   <p> Quiz</p>
+                  </div>
+                 
+                    <div class="filter">
+                     <div> <i class="fa-solid fa-heart-pulse"></i> </div>
+                     <p> Fitness</p>
+                    </div>
+
+      </div>
+    
+
+      </div>
+      <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 mt-3">
         <% for (let listing of alllistings) {%>
           <a href="/listings/<%= listing._id%>" class="listing-link">
           <div class="card col listing-card" >
-            <img src="<%=listing.image%>" class="card-img-top" alt="<%=listing.image%>" style="height: 20rem">
+            <img src="<%=listing.image.url%>" class="card-img-top" alt="<%=listing.image%>" style="height: 20rem">
             <div class="card-img-overlay"></div>
             <div class="card-body">
               <p class="card-text">
                 <b><%=listing.title%></b><br>
                 <%=listing. description%><br>
                Entryfee :  <%=listing.entryfee%><br>
+               Date:<%=listing.date%>23-02-2025<br>
                Location: <%=listing.location%><br>
     
     

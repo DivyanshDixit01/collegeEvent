@@ -48,10 +48,6 @@ nav a.active {
     background-color: #4CAF50;
     color: white;
 }
-
-
-
-
 footer {
     background-color: #282c34;
     color: white;
@@ -88,6 +84,9 @@ footer {
 .footer-column a:hover {
     color: #4CAF50;
 }
+
+
+
 
 
 .social-icons {
@@ -197,3 +196,4 @@ border:none ;
     padding-left: 0;
 padding-right:0 ;
 }
+
