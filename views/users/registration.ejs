@@ -1,0 +1,153 @@
+<% layout("/layouts/boilerplate") %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Competition Registration Form</title>
+</head>
+<body>
+    <div class="container row mt-3 ">
+        <h1>Competition Registration</h1>
+        <form action="#" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="branch">Branch name:</label>
+            <input type="text" id="branch" name="branch" required>
+
+            <label for="event">Select Event:</label>
+            <select id="event" name="event" required>
+                <option value="">--Select an Event--</option>
+                <option value="coding">Coding Competition</option>
+                <option value="dance">Dance Competition</option>
+                <option value="singing">Singing Competition</option>
+                <option value="chess">Chess Competition</option>
+                <option value="cricket">Cricket Competition</option>
+                <option value="fitness">Fitness Competition</option>
+                <option value="debate">Debate Competition</option>
+                <option value="quiz">Quiz Competition</option>
+                <option value="arts">Arts Competition</option>
+            </select>
+
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.navbar a:hover {
+    background-color: #575757;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Fixed width for uniformity */
+    margin: 20px auto; /* Center the container */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Darker text for contrast */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* Bold labels for better visibility */
+}
+
+input, select, textarea {
+    width: 100%; /* Full width for all fields */
+    padding: 12px; /* Increased padding for better spacing */
+    margin-bottom: 15px; /* Space between fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    transition: border-color 0.3s; /* Smooth transition */
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #28a745; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+textarea {
+    resize: none; /* Disable resizing for the textarea */
+}
+
+button {
+    width: 100%; /* Full width for buttons */
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Space above the button */
+    font-size: 16px; /* Consistent font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+
+.error {
+    color: red; /* Style for error messages */
+    margin-bottom: 10px; /* Space below error messages */
+    font-size: 14px; /* Slightly smaller font size for errors */
+}
+
+</style>

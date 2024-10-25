@@ -156,10 +156,12 @@ footer {
     border: none  !important;
     margin-bottom: 2rem;
 }
-.card-img-top{
+.card-img-top show-img{
     border-radius:1rem !important ;
     width:100% !important;
-    object-fit: cover !important;
+    background-size:contain !important;
+    background-position: center;
+    height: 100%;
 }
 
 .card-body {
@@ -196,4 +198,5 @@ border:none ;
     padding-left: 0;
 padding-right:0 ;
 }
+
 

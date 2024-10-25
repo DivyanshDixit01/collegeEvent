@@ -1,11 +1,13 @@
 <% layout("/layouts/boilerplate")%>
+
+
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-6 offset-2">
 
     
     <h3><%= listing.title %></h3>
     </div>
-<div class="card col-6 offset-2 listing-card">
+<div class="card col-8  offset-2 listing_image ">
     <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
     <div class="card-body">
       <p class="card-text">Owned by
@@ -15,6 +17,9 @@
         <p class="card-text">entryfee= <%= listing.entryfee %></p>
         <p class="card-text">contact us=<%= listing.contact %></p>
         <p class="card-text">location=<%= listing.location %></p>
+        <a href="/registration" target="_blank">
+          <button class="btn btn-dark  offset-4" >Registration</button>
+      </a>
 
     </p>
   

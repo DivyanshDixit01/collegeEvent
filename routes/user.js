@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user.js");
 const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
+const ejsMate = require("ejs-mate");
 
 router.get("/contact",(req,res) =>{
     res.render("users/contact.ejs");
@@ -18,6 +19,10 @@ router.get("/privacy",(req,res) =>{
 
 router.get("/terms",(req,res) =>{
     res.render("users/terms.ejs");
+});
+
+router.get("/registration",(req,res) =>{
+    res.render("users/registration.ejs");
 });
 
 
